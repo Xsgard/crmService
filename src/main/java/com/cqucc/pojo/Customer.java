@@ -3,7 +3,9 @@ package com.cqucc.pojo;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
@@ -40,6 +42,10 @@ public class Customer {
 
     private Integer cusStatus;
 
+    //将前端传入的日期字符串转换为DateTime格式
+    @DateTimeFormat(pattern = "yyyy-MM--dd HH:mm:ss")
+    //DateTime类型数据格式化为指定的字符串格式
+    @JsonFormat(pattern = "yyyy-MM--dd HH:mm:ss", timezone = "GMT+8")
     private LocalDateTime cusCreateTime;
 
 
