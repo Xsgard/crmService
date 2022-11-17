@@ -16,11 +16,11 @@ public class customerServiceImpl extends ServiceImpl<customerDao, Customer> impl
     @Autowired
     private customerDao customerDao;
 
-    public IPage<Customer> getOnePage(Integer page,Integer limit){
-        Page<Customer> customerPage=new Page<>(page,limit);
-        LambdaQueryWrapper<Customer> queryWrapper=new LambdaQueryWrapper<>();
+    public IPage<Customer> getOnePage(Integer page, Integer limit) {
+        Page<Customer> customerPage = new Page<>(page, limit);
+        LambdaQueryWrapper<Customer> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.orderByDesc(Customer::getCusCreateTime);
-        this.page(customerPage,queryWrapper);
+        this.page(customerPage, queryWrapper);
         return customerPage;
     }
 }
