@@ -1,6 +1,7 @@
 package com.cqucc.pojo;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -46,6 +47,7 @@ public class Customer {
     @DateTimeFormat(pattern = "yyyy-MM--dd HH:mm:ss")
     //DateTime类型数据格式化为指定的字符串格式
     @JsonFormat(pattern = "yyyy-MM--dd HH:mm:ss", timezone = "GMT+8")
+    @TableField(value = "cus_createtime")
     private LocalDateTime cusCreateTime;
 
 
