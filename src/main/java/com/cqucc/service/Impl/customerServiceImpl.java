@@ -23,4 +23,15 @@ public class customerServiceImpl extends ServiceImpl<customerDao, Customer> impl
         this.page(customerPage, queryWrapper);
         return customerPage;
     }
+
+    /**
+     * 修改客户信息
+     * @param customer
+     * @return
+     */
+    @Override
+    public Boolean update(Customer customer) {
+        boolean b= this.updateById(customer);
+        return b;
+    }
 }
