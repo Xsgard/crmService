@@ -19,7 +19,7 @@ public class customerServiceImpl extends ServiceImpl<customerDao, Customer> impl
     public IPage<Customer> getOnePage(Integer page, Integer limit) {
         Page<Customer> customerPage = new Page<>(page, limit);
         LambdaQueryWrapper<Customer> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.orderByDesc(Customer::getCusCreateTime);
+        queryWrapper.orderByAsc(Customer::getCusId);
         this.page(customerPage, queryWrapper);
         return customerPage;
     }
