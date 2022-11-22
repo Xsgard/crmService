@@ -1,9 +1,11 @@
 package com.cqucc.pojo;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
+@TableName(value = "t_sale_chance")//设置实体类和数据库表的映射关系
 @Data
 public class CusChance {
 
