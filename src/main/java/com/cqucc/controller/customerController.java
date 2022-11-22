@@ -18,20 +18,17 @@ public class customerController {
     @Autowired
     private customerService customerService;
 
-    @GetMapping("/page")
-    public IPage<Customer> page(Integer page, Integer limit) {
-        page = 1;
-        limit = 10;
-        IPage<Customer> pageInfo = customerService.getOnePage(page, limit);
-        return pageInfo;
-    }
-
-
-    public Map<String ,Object> getCustomers(Integer page, Integer limit){
-        HashMap<String,Object> map=new HashMap<>();
-
+    @RequestMapping("/getCustomers")
+    public Map<String,Object> getCustomers(Integer page,Integer limit){
+        //创建map对象，用来返回给前端
+        HashMap<String, Object> map = new HashMap<>();
+        //customerService调用分页查询方法，获取到分页对象
         IPage<Customer> onePage = customerService.getOnePage(page, limit);
-
+        //用map构造返回的json数据
+        map.put("code",0);
+        map.put("msg","");
+        map.put("count",onePage.getTotal());//getTotal()获取查询的onePage中的总记录数
+        map.put("data",onePage.getRecords());//getRecords()获取分页记录列表
         return map;
     }
 }
