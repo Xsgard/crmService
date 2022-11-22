@@ -5,7 +5,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
-public class cusChance {
+public class CusChance {
 
     private Integer scId;
     //客户名称
