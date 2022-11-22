@@ -7,4 +7,6 @@ import com.cqucc.pojo.Customer;
 public interface customerService extends IService<Customer> {
 
     IPage<Customer> getOnePage(Integer page, Integer limit);
+
+    Boolean update(Customer customer);
 }
