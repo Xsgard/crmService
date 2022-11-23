@@ -29,19 +29,19 @@ public class Services {
    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
    //把Datetime类型格式化为指定的字符串格式，传输到前端
    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-   @TableField(value = "cus_createtime")
+   @TableField(value = "ser_createtime")
    private LocalDateTime serCreatetime;
    //将前端传入的日期字符串转换为Datetime类型
    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
    //把Datetime类型格式化为指定的字符串格式，传输到前端
    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-   @TableField(value = "cus_createtime")
+   @TableField(value = "ser_givetime")
    private LocalDateTime serGivetime;
    //将前端传入的日期字符串转换为Datetime类型
    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
    //把Datetime类型格式化为指定的字符串格式，传输到前端
    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-   @TableField(value = "cus_createtime")
+   @TableField(value = "ser_handletime")
    private LocalDateTime serHandletime;
 
 
