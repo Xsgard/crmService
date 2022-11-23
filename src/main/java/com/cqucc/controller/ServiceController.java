@@ -7,6 +7,7 @@ import com.cqucc.pojo.Service;
 import com.cqucc.service.ServiceService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -31,6 +32,24 @@ public class ServiceController {
         serviceService.page(pageInfo);
 
         return R.success(pageInfo);
+    }
+    @PostMapping("/update")
+    public R<String> update(Service service){
+
+        return null;
+    }
+
+    /**
+     * 根据id删除分类
+     * @param id
+     * @return
+     */
+    @DeleteMapping
+    @Transactional
+    public R<String> delete(Long id){
+
+        serviceService.remove(id);
+        return R.success("删除成功！");
     }
 
 }
