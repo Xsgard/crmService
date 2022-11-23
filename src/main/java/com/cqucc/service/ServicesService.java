@@ -1,4 +1,7 @@
 package com.cqucc.service;
 
-public interface ServicesService {
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.cqucc.pojo.Services;
+
+public interface ServicesService extends IService<Services> {
 }
