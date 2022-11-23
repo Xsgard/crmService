@@ -5,13 +5,15 @@ import com.cqucc.pojo.Customer;
 import com.cqucc.service.customerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/customer")
@@ -71,10 +73,9 @@ public class customerController {
         return map;
     }
 
-    @DeleteMapping
+    @PostMapping("/deleteByIds")
     public Map<String, Object> deleteByIds(Integer[] cusIds) {
         Map<String, Object> map = new HashMap<>();
-        Arrays.asList(cusIds);
         Boolean flag = customerService.deleteByIds(Arrays.asList(cusIds));
 
         if (flag) {
