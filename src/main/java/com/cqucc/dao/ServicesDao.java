@@ -5,5 +5,5 @@ import com.cqucc.pojo.Services;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public interface ServiceDao extends BaseMapper<Services> {
+public interface ServicesDao extends BaseMapper<Services> {
 }
