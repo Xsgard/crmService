@@ -1,9 +1,14 @@
 package com.cqucc.pojo;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 @Data
+@TableName(value = "t_contact")
 public class contact {
+    @TableId(value = "con_id",type = IdType.AUTO)
     private Integer conId;
     //联系人名字
     private String conName;
