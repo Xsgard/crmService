@@ -62,6 +62,26 @@ create table t_sale_chance
 )
     collate = utf8mb4_bin;
 
+create table t_services
+(
+    ser_id           int auto_increment
+        primary key,
+    ser_type         int          null comment '服务类型包括：1:咨询、2:投诉、3:建议',
+    ser_description  varchar(120) null comment '概要',
+    cus_id           int          null comment '客户编号',
+    ser_creater      int          null comment '创建人',
+    ser_createtime   datetime     null comment '创建时间',
+    ser_givetime     datetime     null comment '分配时间',
+    ser_handle       int          null comment '处理方法',
+    ser_handleperson varchar(30)  null comment '处理人',
+    ser_handletime   datetime     null comment '处理时间',
+    ser_note         int          null comment '客户反馈',
+    ser_satisfy      int          null comment '客户满意度为1~5',
+    ser_time         int          null comment '反馈时间',
+    ser_detail       varchar(30)  null comment '详细要求',
+    ser_status       int          null comment '状态为：1:新创建、2:已分配，3:已处理、4:已归档'
+);
+
 create table t_user
 (
     u_id       int auto_increment
