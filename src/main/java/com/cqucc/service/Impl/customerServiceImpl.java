@@ -7,9 +7,13 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cqucc.dao.customerDao;
 import com.cqucc.pojo.Customer;
 import com.cqucc.service.customerService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
+@Slf4j
 @Service
 public class customerServiceImpl extends ServiceImpl<customerDao, Customer> implements customerService {
 
@@ -26,12 +30,35 @@ public class customerServiceImpl extends ServiceImpl<customerDao, Customer> impl
 
     /**
      * 修改客户信息
+     *
      * @param customer
      * @return
      */
     @Override
     public Boolean update(Customer customer) {
-        boolean b= this.updateById(customer);
+        boolean b = this.updateById(customer);
         return b;
     }
+
+    @Override
+    public boolean add(Customer customer) {
+        boolean flag = this.save(customer);
+        return flag;
+    }
+
+    @Override
+    public List<Customer> findCusByName(String cusName) {
+        LambdaQueryWrapper<Customer> queryWrapper=new LambdaQueryWrapper<>();
+        queryWrapper.eq(Customer::getCusName,cusName);
+        List<Customer> list = this.list(queryWrapper);
+        return list;
+    }
+
+    @Override
+    public Boolean deleteByIds(List<Integer> cusIds) {
+        int row = customerDao.deleteBatchIds(cusIds);
+        return row==cusIds.size();
+    }
+
+
 }
