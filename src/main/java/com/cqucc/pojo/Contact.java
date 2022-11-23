@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 @TableName(value = "t_contact")
-public class contact {
+public class Contact {
     @TableId(value = "con_id",type = IdType.AUTO)
     private Integer conId;
     //联系人名字
