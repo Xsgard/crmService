@@ -1,5 +1,7 @@
 package com.cqucc.pojo;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
@@ -8,7 +10,7 @@ import java.time.LocalDateTime;
 @TableName(value = "t_sale_chance")//设置实体类和数据库表的映射关系
 @Data
 public class CusChance {
-
+    @TableId(value = "sc_id", type = IdType.AUTO)
     private Integer scId;
     //客户名称
     private String scCusname;
