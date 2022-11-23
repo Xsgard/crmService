@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -62,6 +63,7 @@ public class customerController {
         if (null != list && list.size() > 0) {
             map.put("msg", "该用户名称已存在！");
         } else {
+            customer.setCusCreateTime(LocalDateTime.now());
             //如果没有，插入数据
             Boolean flag = customerService.add(customer);
             if (flag) {//flag位TRUE
