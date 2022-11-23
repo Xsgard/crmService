@@ -7,8 +7,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/customer")
@@ -44,9 +47,42 @@ public class customerController {
         Map<String, Object> map = new HashMap<>();
         if (flag) {
             map.put("msg", "修改成功");
-        } else{
+        } else {
             map.put("msg", "修改失败");
         }
+        return map;
+    }
+
+    @PostMapping("/add")
+    public Map<String, Object> add(Customer customer) {
+        Map<String, Object> map = new HashMap<>();
+        List<Customer> list = customerService.findCusByName(customer.getCusName());
+        if (null != list && list.size() > 0) {
+            map.put("msg", "该用户名称已存在！");
+        } else {
+            //如果没有，插入数据
+            Boolean flag = customerService.add(customer);
+            if (flag) {//flag位TRUE
+                map.put("msg", "添加成功");
+            } else {
+                map.put("msg", "添加失败");
+            }
+        }
+        return map;
+    }
+
+    @DeleteMapping
+    public Map<String, Object> deleteByIds(Integer[] cusIds) {
+        Map<String, Object> map = new HashMap<>();
+        Arrays.asList(cusIds);
+        Boolean flag = customerService.deleteByIds(Arrays.asList(cusIds));
+
+        if (flag) {
+            map.put("msg", "删除成功");
+        } else {
+            map.put("msg", "删除失败");
+        }
+
         return map;
     }
 }
