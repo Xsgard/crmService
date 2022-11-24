@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 public class ServicesController {
     @Autowired
-    private ServicesService serviceService;
+    private ServicesService service;
 
     /**
      * 员工信息分页查询
@@ -28,7 +28,7 @@ public class ServicesController {
         //构造分页构造器
         Page pageInfo = new Page(page,limit);
         //执行查询
-        serviceService.page(pageInfo);
+        service.page(pageInfo);
 
         return R.success(pageInfo);
     }
@@ -47,7 +47,7 @@ public class ServicesController {
     @Transactional
     public R<String> delete(Long id){
 
-        serviceService.remove(id);
+        service.remove(id);
         return R.success("删除成功！");
     }
 
