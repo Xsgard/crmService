@@ -10,17 +10,17 @@ import java.time.LocalDateTime;
 
 @TableName(value="t_services")
 @Data
-public class Service {
+public class Services {
    private Integer serId;
    private Integer serType;
    private String serDescription;
    private Integer cusId;
-   private Integer setCreater;
+   private Integer serCreater;
    private Integer serHandle;
    private String serHandleperson;
    private String serNote;
    private Integer serSatisfy;
-   private Integer serTime;
+   private LocalDateTime serTime;
    private String serDetail;
    private Integer serStatus;
 
