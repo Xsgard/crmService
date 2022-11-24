@@ -34,10 +34,10 @@ public class ServiceController {
     }
 
     @GetMapping("/page")
-    public R<Page> page(Integer page, Integer limit){
-        log.info("page = {},pageSize = {},name = {}" ,page,limit);
+    public R<Page> page(Integer page, Integer limit) {
+        log.info("page = {},pageSize = {},name = {}", page, limit);
         //构造分页构造器
-        Page pageInfo = new Page(page,limit);
+        Page pageInfo = new Page(page, limit);
         //执行查询
         service.page(pageInfo);
 
