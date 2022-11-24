@@ -22,7 +22,7 @@ public class ServiceController {
     private ServicesService service;
 
     @PostMapping("/add")
-    public R<Services> add(Services services) {
+    public R<String> add(Services services) {
         //设置客户id
         services.setCusId(1);
         //设置创建时间
@@ -32,6 +32,6 @@ public class ServiceController {
 
         service.save(services);
 
-        return null;
+        return R.success("添加成功");
     }
 }
