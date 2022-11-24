@@ -28,7 +28,7 @@ public class ServiceController {
         //设置创建时间
         services.setSerCreatetime(LocalDateTime.now());
         //设置创建人
-        services.setSetCreater(1);
+        services.setSerCreater(1);
 
         service.save(services);
 
