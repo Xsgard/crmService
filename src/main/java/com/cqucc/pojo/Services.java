@@ -33,7 +33,4 @@ public class Services {
    @TableField(fill = FieldFill.INSERT_UPDATE)//插入和更新时填充字段
    private LocalDateTime serHandletime;
 
-
-
-
 }

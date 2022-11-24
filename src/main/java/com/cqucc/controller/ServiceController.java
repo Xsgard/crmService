@@ -1,14 +1,19 @@
 package com.cqucc.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.injector.methods.UpdateById;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cqucc.common.R;
 import com.cqucc.pojo.Services;
+import com.cqucc.pojo.User;
 import com.cqucc.service.ServicesService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import sun.security.jca.ServiceId;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -45,7 +50,7 @@ public class ServiceController {
      */
     @GetMapping("/page")
     public R<List> page(Integer page, Integer limit) {
-        log.info("page = {},pageSize = {},name = {}", page, limit);
+        log.info("page = {},pageSize = {}", page, limit);
         //构造分页构造器
         Page pageInfo = new Page(page, limit);
         //执行查询
@@ -54,23 +59,45 @@ public class ServiceController {
         return R.success(pageInfo.getRecords());
     }
 
-    @PostMapping("/update")
-    public R<String> update(Services service) {
+    /**
+     * 查询单个数据
+     * @param id
+     * @return
+     */
+    @GetMapping("/{id}")
+    public R<Services> getById(@PathVariable Integer id) {
+         LambdaQueryWrapper<Services> queryWrapper = new LambdaQueryWrapper<>();
+         queryWrapper.eq(Services::getSerId,id);
+         Services services = service.getOne(queryWrapper);
+         return R.success(services);
+    }
 
-        return null;
+    /**
+     * 修改页面
+     * @param services
+     * @return
+     */
+    @PutMapping
+    @Transactional
+    public R<String> update(@RequestBody Services services) {
+        LambdaQueryWrapper<Services> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(Services::getSerId, services.getSerId());
+        service.remove(queryWrapper);
+
+        service.save(services);
+        return R.success("修改成功！");
     }
 
     /**
      * 根据id删除分类
      *
-     * @param id
+     * @param serId
      * @return
      */
-    @DeleteMapping
+    @GetMapping("/delete")
     @Transactional
-    public R<String> delete(Long id) {
-
-        service.remove(id);
+    public R<String> delete(Integer serId) {
+        service.remove(serId);
         return R.success("删除成功！");
     }
 
