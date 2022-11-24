@@ -1,8 +1,8 @@
 package com.cqucc.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.cqucc.pojo.Service;
+import com.cqucc.pojo.Services;
 
-public interface ServiceService extends IService<Service> {
+public interface ServicesService extends IService<Services> {
     public void remove(Long id);
 }

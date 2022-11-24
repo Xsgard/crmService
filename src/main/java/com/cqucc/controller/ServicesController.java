@@ -1,10 +1,9 @@
 package com.cqucc.controller;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cqucc.common.R;
-import com.cqucc.pojo.Service;
-import com.cqucc.service.ServiceService;
+import com.cqucc.pojo.Services;
+import com.cqucc.service.ServicesService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,9 +12,9 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/services")
 @Slf4j
-public class ServiceController {
+public class ServicesController {
     @Autowired
-    private ServiceService serviceService;
+    private ServicesService serviceService;
 
     /**
      * 员工信息分页查询
@@ -34,7 +33,7 @@ public class ServiceController {
         return R.success(pageInfo);
     }
     @PostMapping("/update")
-    public R<String> update(Service service){
+    public R<String> update(Services service){
 
         return null;
     }

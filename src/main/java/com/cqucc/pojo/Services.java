@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 @TableName(value="t_services")
 @Data
-public class Service {
+public class Services {
    private Integer serId;
    private Integer serType;
    private String serDescription;
