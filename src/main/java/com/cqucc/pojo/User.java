@@ -9,12 +9,8 @@ import lombok.Data;
 @TableName(value="t_user")
 @Data
 public class User {
-    @TableId(value = "u_id")
-    private Integer id;
-    @TableField(value = "u_name")
-    private String name;
-    @TableField(value = "u_password")
-    private String password;
-
-    private Integer r_id;
+   private Integer uId;
+   private String uName;
+   private String uPassword;
+   private Integer rId;
 }

@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cqucc.dao.customerDao;
 import com.cqucc.pojo.Customer;
+import com.cqucc.pojo.Report;
 import com.cqucc.service.customerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +59,12 @@ public class customerServiceImpl extends ServiceImpl<customerDao, Customer> impl
     public Boolean deleteByIds(List<Integer> cusIds) {
         int row = customerDao.deleteBatchIds(cusIds);
         return row==cusIds.size();
+    }
+
+    @Override
+    public List<Report> getCusNumByCusRegion() {
+        List<Report> reports = customerDao.countRegion();
+        return reports;
     }
 
 

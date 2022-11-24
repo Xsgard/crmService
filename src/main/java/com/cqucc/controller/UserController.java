@@ -7,15 +7,15 @@ import com.cqucc.pojo.User;
 import com.cqucc.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 @RestController
-@RequestMapping("/employee")
+@RequestMapping("/user")
 @Slf4j
 public class UserController {
 
@@ -24,33 +24,41 @@ public class UserController {
 
     /**
      * 员工登录
+     *
      * @param request
      * @param user
      * @return
      */
     @PostMapping("/login")
-    public R<User> login(HttpServletRequest request,@RequestBody User user){
+    public R<User> login(HttpServletRequest request, @RequestBody User user) {
 
         //1、提交密码
-        String password = user.getPassword();
+        String password = user.getUPassword();
         //2、根据页面提交的用户名username查询数据库
         LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
-        queryWrapper.eq(User::getName,user.getName());
+        queryWrapper.eq(User::getUName, user.getUName());
         User emp = userService.getOne(queryWrapper);
 
         //3、如果没有查询到则返回登录失败结果
-        if(emp == null){
+        if (emp == null) {
             return R.error("登录失败");
         }
 
         //4、密码比对，如果不一致则返回登录失败结果
-        if(!emp.getPassword().equals(password)){
+        if (!emp.getUPassword().equals(password)) {
             return R.error("登录失败");
         }
 
         //6、登录成功，将员工id存入Session并返回登录成功结果
-       request.getSession().setAttribute("employee",emp.getId());
+//        request.getSession().setAttribute("employee", emp.getId());
         return R.success(emp);
     }
+
+    @GetMapping("/getIdAndName")
+    public List<User> getIdAndName() {
+        List<User> idAndName = userService.getIdAndName();
+        return idAndName;
+    }
+
 }
 
