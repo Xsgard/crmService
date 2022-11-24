@@ -60,18 +60,4 @@ public class ServiceController {
         return null;
     }
 
-    /**
-     * 根据id删除分类
-     *
-     * @param id
-     * @return
-     */
-    @DeleteMapping
-    @Transactional
-    public R<String> delete(Long id) {
-
-        service.remove(id);
-        return R.success("删除成功！");
-    }
-
 }
