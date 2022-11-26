@@ -3,6 +3,7 @@ package com.cqucc.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.cqucc.common.R;
+import com.cqucc.pojo.Sort;
 import com.cqucc.pojo.User;
 import com.cqucc.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +18,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/user")
 @Slf4j
+@CrossOrigin
 public class UserController {
 
     @Autowired
@@ -55,8 +57,8 @@ public class UserController {
     }
 
     @GetMapping("/getIdAndName")
-    public List<User> getIdAndName() {
-        List<User> idAndName = userService.getIdAndName();
+    public List<Sort> getIdAndName() {
+        List<Sort> idAndName = userService.getIdAndName();
         return idAndName;
     }
 
