@@ -3,6 +3,7 @@ package com.cqucc.service.Impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.cqucc.dao.UserDao;
+import com.cqucc.pojo.Sort;
 import com.cqucc.pojo.User;
 import com.cqucc.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -18,8 +19,8 @@ public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserS
     private UserDao userDao;
 
     @Override
-    public List<User> getIdAndName() {
-        List<User> idAndName = userDao.getIdAndName();
+    public List<Sort> getIdAndName() {
+        List<Sort> idAndName = userDao.getIdAndName();
         return idAndName;
     }
 }
