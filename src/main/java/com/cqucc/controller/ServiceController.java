@@ -45,7 +45,7 @@ public class ServiceController {
      */
     @GetMapping("/page")
     public R<List> page(Integer page, Integer limit) {
-        log.info("page = {},pageSize = {},name = {}", page, limit);
+//        log.info("page = {},pageSize = {},name = {}", page, limit);
         //构造分页构造器
         Page pageInfo = new Page(page, limit);
         //执行查询
@@ -55,9 +55,11 @@ public class ServiceController {
     }
 
     @PostMapping("/update")
-    public R<String> update(Services service) {
-
-        return null;
+    public R<String> update(Services services) {
+        services.setCusId(1);
+        services.setSerGivetime(LocalDateTime.now());
+        service.updateById(services);
+        return R.success("修改成功");
     }
 
 }
